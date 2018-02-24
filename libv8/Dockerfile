@@ -1,6 +1,6 @@
 FROM ubuntu:xenial as build
 
-ARG V8=6.6.275
+ARG V8=6.6.286
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV TERM=xterm-256color
