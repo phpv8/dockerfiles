@@ -3,7 +3,7 @@
 ## Usage
 
 While this image is supposed to be a service image, you can give a try to `d8` shell by running
-`docker run -it pinepain/php-v8 "php test.php"`
+`docker run -it pinepain/php-v8 bash -c "php test.php"`
 
 ## Purpose
 
