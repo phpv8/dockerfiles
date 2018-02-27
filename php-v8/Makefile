@@ -29,3 +29,11 @@ push-stable: build-stable
 
 push-latest: build-latest
 	$(DOCKER) push $(NAME):latest
+
+clean: clean-latest clean-stable
+
+clean-stable:
+	$(DOCKER) rmi $(NAME):$(PHP_V8)
+
+clean-latest:
+	$(DOCKER) rmi $(NAME):latest
