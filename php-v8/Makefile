@@ -1,6 +1,6 @@
 V8 = 6.6.313
 PHP = 7.2
-PHP_REF = v0.5.0
+PHP_REF = v0.6.0
 PHP_V8 = v0.2.2
 DOCKER = docker
 NAME = pinepain/php-v8
