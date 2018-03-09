@@ -27,12 +27,11 @@ RUN echo 'solutions = ['                                                >> /tmp/
 
 RUN	cd /tmp && git clone --depth=1 https://chromium.googlesource.com/chromium/tools/depot_tools.git && \
 	export PATH=`pwd`/depot_tools:"${PATH}"  && \
-	export NPROCS=`grep -c ^processor /proc/cpuinfo` && \
-    gclient sync --no-history --reset -j ${NPROCS} -r ${V8} && \
+    gclient sync --no-history --reset -j $(nproc) -r ${V8} && \
 	cd v8  && \
 	gn gen out.gn/x64.release --args="is_debug=false is_official_build=true is_component_build=true is_cfi=false is_clang=false v8_use_external_startup_data=false treat_warnings_as_errors=false use_custom_libcxx=false use_sysroot=false use_gold=false use_allocator_shim=false" && \
 	gn args out.gn/x64.release --list > out.gn/x64.release/gn_args.txt && \
-	ninja -j ${NPROCS} -v d8 -C out.gn/x64.release
+	ninja -j $(nproc) -v d8 -C out.gn/x64.release
 
 RUN cd /tmp/v8 && \
     mkdir -p /opt/libv8/include && \
