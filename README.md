@@ -4,6 +4,7 @@ Common docker containers, used for development.
 
 ## Images
  - libv8
+ - php-v8
     
 ## License
 

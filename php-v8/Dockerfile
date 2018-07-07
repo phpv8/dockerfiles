@@ -1,9 +1,8 @@
 ARG V8=latest
 
-FROM pinepain/libv8:${V8}
+FROM libv8:${V8}
 
 ARG PHP=7.2
-ARG PHP_REF=master
 ARG PHP_V8=master
 
 ENV DEBIAN_FRONTEND noninteractive
@@ -24,16 +23,8 @@ RUN echo "deb http://ppa.launchpad.net/ondrej/php/ubuntu xenial main" > /etc/apt
     php -i && \
     php-config || true
 
-COPY ref.ini /etc/php/${PHP}/mods-available/ref.ini
-RUN git clone https://github.com/pinepain/php-ref.git && \
-    cd php-ref && \
-    git checkout ${PHP_REF} && \
-    phpize && ./configure && make && make test && make install && \
-    phpenmod ref && \
-    cd .. && rm -rf php-ref
-
 COPY v8.ini /etc/php/${PHP}/mods-available/v8.ini
-RUN git clone https://github.com/pinepain/php-v8.git && \
+RUN git clone https://github.com/phpv8/php-v8.git && \
     cd php-v8 && \
     git checkout ${PHP_V8} && \
     phpize && ./configure && make && make test && make install && \
