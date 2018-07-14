@@ -1,6 +1,6 @@
 ARG V8=latest
 
-FROM libv8:${V8}
+FROM phpv8/libv8:${V8}
 
 ARG PHP=7.2
 ARG PHP_V8=master
